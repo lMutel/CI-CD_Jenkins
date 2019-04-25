@@ -10,9 +10,7 @@ pipeline {
         }
         stage('DeployToStaging') {
             when {
-                expression {
-                     return sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true) == "master"
-                  }
+                branch 'master'
             }
 
             steps {
